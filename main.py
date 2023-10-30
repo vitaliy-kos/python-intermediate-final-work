@@ -11,7 +11,7 @@ def save_note(id, name, body):
     notes = get_notes()
     notes.append({'id': id, 'name': name, 'body': body, 'date': dt_now_str})
 
-    with open("python-intermediate-final-work/notes.json", "w", encoding="utf-8") as fh:
+    with open("notes.json", "w", encoding="utf-8") as fh:
         fh.write(json.dumps(notes, ensure_ascii=False))
     return
 
@@ -28,13 +28,13 @@ def delete_note(id):
     return False
 
 def save_notes(notes):
-    with open("python-intermediate-final-work/notes.json", "w", encoding="utf-8") as fh:
+    with open("notes.json", "w", encoding="utf-8") as fh:
         fh.write(json.dumps(notes, ensure_ascii=False))
     return
 
 
 def get_notes():
-    with open("python-intermediate-final-work/notes.json", "r", encoding="utf-8") as fh:
+    with open("notes.json", "r", encoding="utf-8") as fh:
         notes = json.load(fh)
 
     sorted_notes = sorted(notes, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d %H:%M:%S'), reverse=True)
